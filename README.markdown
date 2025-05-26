@@ -1,4 +1,13 @@
 # Mire-Updated
 
-I've added a new feature here: the ability to complete quests, new rooms, and locked rooms that need to be unlocked with items.
-Launching: telnet ?localhost? 3333
+## New Features
+
+- Quest completion support  
+- Added new rooms  
+- Locked rooms that require specific items to unlock
+
+## How to Play
+
+Launch the game by connecting via telnet:  
+```bash
+telnet localhost 3333
