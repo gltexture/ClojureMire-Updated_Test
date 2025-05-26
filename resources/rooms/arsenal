@@ -1,0 +1,4 @@
+{:desc "You are in the arsenal. There's nothing here but an old crossbow."
+ :exits {:west :start}
+ :needs #{:keys}
+ :items #{:crossbow}}

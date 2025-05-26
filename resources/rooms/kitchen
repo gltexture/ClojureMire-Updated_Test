@@ -1,0 +1,8 @@
+{:desc "You're in the old kitchen. There's nothing here but a boiling pot where you can cook something."
+ :exits {:north :hallway}
+ :quest {
+  :required-items #{:arrow :snake :crossbow}
+  :result :loaded_crossbow
+  :completed? false
+  }
+}

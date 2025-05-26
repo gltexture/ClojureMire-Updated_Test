@@ -1,0 +1,4 @@
+{:desc "Exit!"
+ :exits {:north :FINAL :south :stairs}
+ :needs #{:exit_key}
+}

@@ -1,0 +1,9 @@
+{:desc "You are on your way out! However, you are blocked by a huge spider! You need to kill him!"
+ :desc_qc "You are on your way out! The spider is dead!"
+ :exits {:east :hallway :north :exit}
+  :quest {
+   :required-items #{:loaded_crossbow}
+   :result :exit_key
+   :completed? false
+   }
+}
