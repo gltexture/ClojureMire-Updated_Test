@@ -25,19 +25,27 @@
 ;; Command functions
 
 (defn look
-  "Get a description of the surrounding environs and its contents."
+  "Get a description of the surrounding environs and its contents, all in one sentence."
   []
-  (let [room @player/*current-room*]
+  (let [room @player/*current-room*
+        desc (if (and (rooms/has-a-quest room) (@(:quest room) :completed?))
+               (:desc_qc room)
+               (:desc room))
+        exits (keys @(:exits room))
+        items @(:items room)
+        quest-str (when (rooms/has-a-quest room)
+                        (let [quest @(:quest room)]
+                          (str "Quest: you need " (str/join ", " (:required-items quest)) ". You'll get " (:result quest) ".")))]
     (str
-     (if (and (rooms/has-a-quest room) (@(:quest room) :completed?))
-       (:desc_qc room)
-       (:desc room))
-     "\nExits: " (keys @(:exits room)) "\n"
-     (str/join "\n" (map #(str "There is " % " here.") @(:items room)))
-     (when (rooms/has-a-quest room) (let [quest @(:quest room)] (str "\nQuest. You need: " (str/join ", " (:required-items quest)) ". You'll get: " (:result quest))))
+     desc ". "
+     "Exits: " (str/join ", " exits) ". "
+     (when (seq items)
+           (str (str/join " " (map #(str "There is " % " here.") items)) ". "))
+     (or quest-str "")
      )
-  )
+    )
 )
+
 
 (defn move
   "\"♬ We gotta get out of this place... ♪\" Give a direction."
