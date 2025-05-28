@@ -36,11 +36,9 @@
         quest-str (when (rooms/has-a-quest room)
                         (let [quest @(:quest room)]
                           (str "Quest: you need " (str/join ", " (:required-items quest)) ". You'll get " (:result quest) ".")))]
-    (str
-     desc ". "
-     "Exits: " (str/join ", " exits) ". "
+    (str desc " Exits: " (str/join ", " exits) ". "
      (when (seq items)
-           (str (str/join " " (map #(str "There is " % " here.") items)) ". "))
+           (str (str/join " " (map #(str "There is " % " here") items)) ". "))
      (or quest-str "")
      )
     )
